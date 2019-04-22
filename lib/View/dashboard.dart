@@ -70,6 +70,14 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
+  
+void choiceAction(String choice){
+    if(choice == Constants.Keluar){
+      Navigator.of(context).pop();
+      Navigator.of(context).pushReplacementNamed('/halamanKeluar');
+    }
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,12 +85,17 @@ class _DashboardState extends State<Dashboard> {
           title: Text("Dashboard"),
           backgroundColor: const Color(0xff0ba120),
           actions: <Widget>[
-            GestureDetector(
-              child: Icon(Icons.more_vert),
-              onTap: (){
-              Navigator.of(context).pushReplacementNamed('/halamanKeluar');
-              },
-            ),
+            PopupMenuButton<String>(
+            onSelected: choiceAction,
+            itemBuilder: (BuildContext context){
+              return Constants.pilih.map((String choice){
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          )
           ],
         ),
         body: Container(
@@ -188,4 +201,13 @@ class MyClipper1 extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return null;
   }
+}
+
+
+class Constants{
+  static const String Keluar = 'Keluar';
+
+  static const List<String> pilih = <String>[
+    Keluar,
+  ];
 }

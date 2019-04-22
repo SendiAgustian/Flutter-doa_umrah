@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+@immutable
 class ListDoa extends StatelessWidget {
-  String judulDoa = "";
+  final String judulDoa;
   ListDoa({this.judulDoa});
 
   @override
@@ -17,6 +18,24 @@ class ListDoa extends StatelessWidget {
           title: Text(judulDoa),
           backgroundColor: const Color(0xff0ba120),
         ),
+        
+        //tanya ustadz
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            Navigator.of(context).pushNamed('/halamanTanyaUstadz');
+          },
+          child: Icon(Icons.live_help, ),
+          backgroundColor: const Color(0xff0ba120),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: BottomAppBar(
+          elevation: 20,
+          color: const Color(0xff0ba120),
+          child: ButtonBar(
+            children: <Widget>[],
+          ),
+        ),
+
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(

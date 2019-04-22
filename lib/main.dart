@@ -1,3 +1,5 @@
+import 'package:doa_umrah/View/chatUstadz.dart';
+import 'package:doa_umrah/View/login.dart';
 import 'package:flutter/material.dart';
 import 'package:doa_umrah/View/dashboard.dart';
 // import 'package:doa_umrah/View/listDoa.dart';
@@ -15,10 +17,12 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Doa-doa Umrah",
+      home: Login(),
       routes: <String, WidgetBuilder>{
-        '/halamanDashboard': (BuildContext context) => MyApp(),
+        '/halamanKeluar': (BuildContext context) => Login(),
+        '/halamanDashboard': (BuildContext context) => Dashboard(),
+        '/halamanTanyaUstadz': (BuildContext context) => TanyaUstadz(),
       },
-      home: Dashboard(),
     );
   }
 }

@@ -2,14 +2,12 @@ import 'package:doa_umrah/View/listDoa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
-
   Widget kategoriDoa(String judul, String ket) {
     return Container(
       child: Stack(
@@ -48,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
                   Text(
                     "More...",
                     style: TextStyle(
-                      fontSize: 11,
+                      fontSize: 13,
                       fontFamily: "arial",
                       color: Colors.blue,
                     ),
@@ -60,7 +58,7 @@ class _DashboardState extends State<Dashboard> {
           GestureDetector(
             onTap: () {
               // Navigator.of(context).pop();
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (BuildContext context) => ListDoa(judulDoa: judul),
                 )
@@ -78,6 +76,14 @@ class _DashboardState extends State<Dashboard> {
         appBar: AppBar(
           title: Text("Dashboard"),
           backgroundColor: const Color(0xff0ba120),
+          actions: <Widget>[
+            GestureDetector(
+              child: Icon(Icons.more_vert),
+              onTap: (){
+              Navigator.of(context).pushReplacementNamed('/halamanKeluar');
+              },
+            ),
+          ],
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -160,16 +166,17 @@ class _DashboardState extends State<Dashboard> {
   }
 }
 
-
 class MyClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
 
-    path.lineTo(0, size.height-30);
+    path.lineTo(0, size.height - 30);
 
-    path.quadraticBezierTo(size.width/4, size.height-20, size.width/2, size.height-70);
-    path.quadraticBezierTo(size.width-(size.width/4), size.height-110, size.width, size.height-100);
+    path.quadraticBezierTo(
+        size.width / 4, size.height - 20, size.width / 2, size.height - 70);
+    path.quadraticBezierTo(size.width - (size.width / 4), size.height - 110,
+        size.width, size.height - 100);
 
     path.lineTo(size.width, 0);
     path.close();
